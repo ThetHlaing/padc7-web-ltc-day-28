@@ -4,11 +4,15 @@ const route = express.Router();
 const DepartmentController = require('../../controllers/department');
 const controller = new DepartmentController();
 
+
+route.use(require('../../middlewares/auth'));
+
 route.get('/', (req, res) => {
     controller.getAll(req, res);
 });
 
-route.post('/', (req, res) => {
+route.post('/', (req, res) => {    
+    
     res.send("Create a department");
 });
 
